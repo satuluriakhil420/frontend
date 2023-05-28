@@ -21,6 +21,15 @@ resource "aws_ecs_service" "service1" {
 }
 
 resource "aws_ecs_task_definition" "td1" {
+  family                   = "app11"
+  requires_compatibilities = ["FARGATE"]
+
+  cpu                = "512"
+  memory             = "1024"
+  network_mode       = "awsvpc"
+  task_role_arn      = "arn:aws:iam::416007387859:role/ecsTaskExecutionRole"
+  execution_role_arn = "arn:aws:iam::416007387859:role/ecsTaskExecutionRole"
+
   container_definitions = jsonencode([
     {
       name      = "app11"
@@ -36,15 +45,8 @@ resource "aws_ecs_task_definition" "td1" {
       ]
     }
   ])
-  family                   = "app11"
-  requires_compatibilities = ["FARGATE"]
-
-  cpu                = "512"
-  memory             = "1024"
-  network_mode       = "awsvpc"
-  task_role_arn      = "arn:aws:iam::416007387859:role/ecsTaskExecutionRole"
-  execution_role_arn = "arn:aws:iam::416007387859:role/ecsTaskExecutionRole"
 }
+
 resource "aws_ecs_service" "service2" {
   name                   = "app_service2"
   cluster                = aws_ecs_cluster.ecs.arn
@@ -64,6 +66,15 @@ resource "aws_ecs_service" "service2" {
 }
 
 resource "aws_ecs_task_definition" "td2" {
+  family                   = "app12"
+  requires_compatibilities = ["FARGATE"]
+
+  cpu                = "512"
+  memory             = "1024"
+  network_mode       = "awsvpc"
+  task_role_arn      = "arn:aws:iam::416007387859:role/ecsTaskExecutionRole"
+  execution_role_arn = "arn:aws:iam::416007387859:role/ecsTaskExecutionRole"
+
   container_definitions = jsonencode([
     {
       name      = "app12"
@@ -79,12 +90,4 @@ resource "aws_ecs_task_definition" "td2" {
       ]
     }
   ])
-  family                   = "app12"
-  requires_compatibilities = ["FARGATE"]
-
-  cpu                = "512"
-  memory             = "1024"
-  network_mode       = "awsvpc"
-  task_role_arn      = "arn:aws:iam::416007387859:role/ecsTaskExecutionRole"
-  execution_role_arn = "arn:aws:iam::416007387859:role/ecsTaskExecutionRole"
 }

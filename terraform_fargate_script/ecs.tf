@@ -23,7 +23,7 @@ resource "aws_ecs_service" "service1" {
 resource "aws_ecs_task_definition" "td1" {
   container_definitions = jsonencode([
     {
-      name      = "app1"
+      name      = "app11"
       image     = "satulakhil/frontend:React"
       cpu       = 512
       memory    = 1024
@@ -36,7 +36,7 @@ resource "aws_ecs_task_definition" "td1" {
       ]
     }
   ])
-  family                   = "app1"
+  family                   = "app11"
   requires_compatibilities = ["FARGATE"]
 
   cpu                = "512"
@@ -66,7 +66,7 @@ resource "aws_ecs_service" "service2" {
 resource "aws_ecs_task_definition" "td2" {
   container_definitions = jsonencode([
     {
-      name      = "app1"
+      name      = "app12"
       image     = "satulakhil/backend:java"
       cpu       = 512
       memory    = 1024
@@ -79,7 +79,7 @@ resource "aws_ecs_task_definition" "td2" {
       ]
     }
   ])
-  family                   = "app1"
+  family                   = "app12"
   requires_compatibilities = ["FARGATE"]
 
   cpu                = "512"
